@@ -1,0 +1,312 @@
+$theme: (
+  // Containers' max with or padding-x on mobile
+  container-max-width: 720px,
+  container-padding-x: 6vw,
+  // Base UI Factors
+  radius : 12px,
+  colors: (
+    'primary': #e7ff00, 'yellow': #e7ff00, 'red': #ff3333, 'blue': #1188EE, 'green': #1bc800,
+    'black': #111315, 'ink': #1A1D1F, 'gray': #5D6267, 'gray-light': #5E6670, 'silver': #8a8a8a, 'white': #fff7d9
+  ),
+  texts: ( 1: 32px, 2: 28px, 3: 24px, 4: 18px, 5: 16px, 6: 14px, 7: 12px ),
+  lineHeight: 1.4,
+  sizes: ( 16: 16px, 24: 24px, 28: 28px, 32: 32px, 36: 36px, 44: 44px, 48: 48px, 54: 54px, 64: 64px, 84: 84px, 160: 160px ),
+  spacings: ( 100:100px, 80: 80px, 50: 50px, 30: 30px, 20: 20px, 15: 15px, 10: 10px, 8: 8px, 5: 5px, 4: 4px, 2: 2px, 0: 0px ),
+);
+
+@import 'bruss';
+@import './assets/iconfont.css';
+
+
+body{
+  @extend .bg-black, .white, .t-4;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: .02em;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight: normal;
+}
+
+.hide-scroll-bar{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+// For extension
+.ext-state{
+  &.ext-on{
+    .ext-off{ display: none; }
+  }
+  &.ext-off{
+    .ext-on{ display: none; }
+  }
+}
+
+.hover{
+  .hover-show{
+    opacity: 0;
+  }
+  &:hover{
+    .hover-show{
+      opacity: 1;
+    }
+  }
+}
+
+
+.icon{
+  display: inline;
+  font-family: "iconfont" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code,code *{
+  font-size: 14px!important;
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bold!important;
+}
+
+button{ border: none; padding: 0; }
+*{ outline: none; }
+
+.shadow-primary{
+  box-shadow: 0 0 10px rgba($color: #e7ff00, $alpha: 1);
+}
+
+.shadow-black{
+  box-shadow: 0 -10px 10px rgba($color: #000, $alpha: .1 );
+}
+
+pre{
+  font-family: 'Courier New', sans-serif;
+  font-weight: bold!important;
+  border-radius: 16px;
+  overflow: scroll;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.sepline{
+  border-bottom: 1px rgba(255,255,255,.05) solid;
+}
+.sepline-top{
+  border-top: 1px rgba(255,255,255,.05) solid;
+}
+
+.loose{
+  letter-spacing: .1em;
+}
+
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input,textarea{
+  font-family: inherit;
+  resize:none; border:0; background:none;
+  &:focus{
+    background: #0009;
+    &.focus-primary{
+      outline:1px #e7ff00 solid;
+    }
+    &.focus-blue{
+      outline:1px #0170DA solid;
+    }
+  }
+}
+
+.tapable{ cursor: pointer; }
+.tapable:active{ opacity: .6!important; }
+
+/**
+ * Animation Effects
+ */
+.ani-fadeup{
+  opacity: 0;
+  transform: translateY(2vh);
+  transition: all cubic-bezier(0.68,-0.55,0.27,1.55) 400ms;
+  &.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+//should define transform: translateX(0) in dom.style
+.ani-slideX{
+  transition: all cubic-bezier(0.155, 0.675, 0.275, 0.975) 300ms;
+  &.visible{
+    transform: translateX(0)!important;
+  }
+}
+
+.ani-fadein{
+  opacity: 0;
+  transition: opacity ease-in 500ms;
+  &.visible{
+    opacity: 1;
+  }
+}
+
+.ani-fadein-slow{
+  opacity: 0;
+  transition: opacity ease-in 1000ms;
+  &.visible{
+    opacity: 1;
+  }
+}
+
+.ani-popin{
+  transform: translateY(10vh) scale(1.2) rotate(10deg);
+  opacity: 0;
+  transition: all cubic-bezier(0.68,-0.55,0.27,1.55) 300ms;
+  &.visible{
+    transform: translateY(0) scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+
+.hotkey{
+  @extend .inline, .h-32,.th-32, .black, .bg-white, .px-10, .bold, .t-7, .border-gray, .center;
+  min-width: 24px;
+  letter-spacing: -.04rem;
+  border-radius: 6px;
+}
+
+code.hljs{
+  @extend .round;
+}
+
+.bg-black-blur{
+  background: rgba($color: #111315, $alpha: .5);
+  backdrop-filter: blur(4px);
+}
+
+.bg-shadow-b{
+  background: linear-gradient(rgba(27,27,27, 0), rgba(27,27,27, 1) 50%);
+}
+.bg-shadow-t{
+  background: linear-gradient(180deg, rgba(27,27,27, 1) 10%, rgba(27,27,27, 0) 100%);
+}
+.bg-black-primary{
+  background: #161700
+}
+.box-primary-black{
+  background: #0b0c01;
+  border: 1px solid #e7ff0066;
+}
+
+// Player Sound Waves
+@keyframes quiet {
+  25%{
+    transform: scaleY(.6);
+  }
+  50%{
+    transform: scaleY(.4);
+  }
+  75%{
+    transform: scaleY(.8);
+  }
+}
+
+@keyframes normal {
+  25%{
+    transform: scaleY(1);
+  }
+  50%{
+    transform: scaleY(.4);
+  }
+  75%{
+    transform: scaleY(.6);
+  }
+}
+@keyframes loud {
+  25%{
+    transform: scaleY(1);
+  }
+  50%{
+    transform: scaleY(.4);
+  }
+  75%{
+    transform: scaleY(1.2);
+  }
+}
+
+.wave-boxes{
+  display: flex;
+  justify-content: space-between;
+  height: 54px;
+  padding-top: 14px;
+  padding-left: 10px;
+  --boxSize: 2px;
+  --gutter: 6px;
+  width: calc((var(--boxSize) + var(--gutter)) * 5);
+
+  .box{
+    @extend .bg-primary;
+    transform: scaleY(.4);
+    height: 60%;
+    width: var(--boxSize);
+    border-radius: 4px;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  
+  .box1{
+    animation-name: quiet;
+  }
+  
+  .box2{
+    animation-name: normal;
+  }
+  
+  .box3{
+    animation-name: quiet;
+  }
+  
+  .box4{
+    animation-name: loud;
+  }
+  
+  .box5{
+    animation-name: quiet;
+  }
+
+}
+
+.toastify button{ float: right; }
+
+@keyframes loading-dot-line{
+  0%
+  {
+    width: 10%;
+    left: 0px;
+  }
+  25%
+  {
+    width: 100%;
+    left: 0px;
+  }
+  50%
+  {
+    width: 10%;
+    left: 90%;
+  }
+  100%
+  {
+    width: 10%;
+    left: 0px;
+  }
+}
