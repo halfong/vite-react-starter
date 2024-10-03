@@ -7,18 +7,18 @@ import axios from "axios"
  */
 export default class Felt {
 
-  endpoint = 'http://localhost'
-  onData: ( method, path, resData:any, req:object) => void
-  
-  jwtToken = {
-    __last : localStorage.getItem( 'jwt_token' ) ,
-    get(){ return this.__last },
-    set(v){ localStorage.setItem( 'jwt_token', JSON.stringify(v)  ); this.__last = v }
-  }
+  endpoint
+  onData
+  jwtToken
 
-  constructor({ endpoint, onData }:{ endpoint:string, onData }){
+  constructor(
+    endpoint:string,
+    jwtToken:{ get:()=>string, set:(string)=>void },
+    onData:( method, path, resData:any, req:object) => void
+  ){
     this.endpoint = endpoint
     this.onData = onData
+    this.jwtToken = jwtToken
   }
 
   async request( path, data = {}, options:{ method:'GET'|'POST', data?:any } ){
