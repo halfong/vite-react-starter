@@ -1,7 +1,7 @@
 const local = {
 
   saveArray( k , arr, limit = 100 ){
-    if( arr.length > 100 ) arr = arr.slice( -100 )
+    arr = arr.slice( -limit )
     return this.save( k , arr )
   },
 
